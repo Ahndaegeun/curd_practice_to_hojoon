@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>board</h1>
+<ul>
+    <li th:each="item : ${articleList}">
+        <a th:href="@{/detail(id=${item.id})}">
+            <span th:text="${item.title}"></span>
+            <span th:text="${item.date}"></span>
+            <span th:text="${item.member.username}"></span>
+        </a>
+    </li>
+</ul>
+<a th:if="${session.user} == null" href="/member">sign</a>
+<a href="/board">write</a>
+<a th:if="${session.user} == null" href="/login">login</a>
+<a th:if="${session.user} != null" href="/logout">logout</a>
+</html>
